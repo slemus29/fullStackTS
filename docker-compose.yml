@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: zaga_slemus

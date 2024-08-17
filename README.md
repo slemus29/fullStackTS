@@ -1,126 +1,73 @@
-# Fullstack Challenge
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
-## Introduction
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-This challenge is for a candidate who is passionate about backend development in Node and has strong competency with
-NestJS, data modeling, React and TypeScript.
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-We are not aiming to take too much of your personal time for this challenge,  and it is intended to be completed in 3 to
-4 hours. We expect to see how you approach the problem and how you can solve it, and not the most perfect written code
-nor a too complicated database or UI structure.
+## Description
 
-We are looking to have a GraphQL Schema that will be used to query and update data. This data needs to be populated
-somehow, so please use any `faker` library of your preference, and make sure to have a `seed` command in your project.
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-Instructions below:
+## Installation
 
-#### DB and ORM
-
-Though we encourage you to use Prisma, please use any ORM you prefer, and make sure to use PostgreSQL as your database.
-
-#### Entities
-
-The entities that we need for this challenge are `Users`, `Listings` and `Transactions`. Depending on your approach,
-please create any other entities you need.
-
-For the `Users` entity, we would have **at least** the following properties:
-
-```typescript
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+```bash
+$ pnpm install
 ```
 
-For the `Listings` entity, we would have **at least** the following properties:
+## Running the app
 
-```typescript
-export interface Listing {
-  id: string;
-  title: string;
-  description?: string | null;
-  price: number;
-  address: {
-    address1: string;
-    address2?: string | null;
-    state: string;
-    zipcode: string;
-  };
-  createdAt: Date;
-  updatedAt: Date;
-}
+```bash
+# development
+$ pnpm run start
+
+# watch mode
+$ pnpm run start:dev
+
+# production mode
+$ pnpm run start:prod
 ```
 
-For the `Transactions` entity, we would have **at least** the following properties:
+## Test
 
-```typescript
-export interface Transaction {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+```bash
+# unit tests
+$ pnpm run test
+
+# e2e tests
+$ pnpm run test:e2e
+
+# test coverage
+$ pnpm run test:cov
 ```
 
-> :warning: We encourage you to use [nano ID](https://www.npmjs.com/package/nanoid) for the Primary Column, but it is
-> not mandatory.
+## Support
 
-#### Operations
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-- Queries
-    - Get all the users
-    - Get all the listings
-    - Get all the transactions
-- Mutations
-    - A user can purchase a listing by sending their `id` and the `id` of the listing they are purchasing. This
-      transaction is stored in the `Transactions` table. Do not forget to  create and update the necessary properties in the
-      `Users`, `Listings`, and `Transactions` entities.
+## Stay in touch
 
-## Frontend
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-For the frontend you will have a UI showing a Listings page and the Transaction associated to that Listing, if any.
-The transaction would have the buyer (user) information for us to identify who is the owner.
+## License
 
-We would like you to use the following React (or Next) and Tailwind. Be creative.
-
-## Environment Variables
-
-The following environment variables are required:
-
-```dotenv
-DB_USER=
-DB_PASSWORD=
-DB_NAME=
-API_ENDPOINT=http://localhost:{port}/graphql
-```
-
-Feel free to add any other variable you need.
-
-## Monorepo
-
-You are free to have the two projects separated in different folders in the same repository, but explore the idea of
-using NX as a monorepo for having both frontend and backend connected. This would take you 15 minutes but will simplify
-the process a lot. This is not mandatory.
-
-## Bonus Points
-
-- Optional mutations
-    - A user can be created by sending their `name` and `email`
-    - A listing can be created by sending the `title`, `price`, and `address`
-- Validation errors
-- Listings pagination
-- Tests (unit and e2e)
-- Deployment in any cloud of your preference
-- React Query for getting the data from the backend
-
-## How to Submit your Challenge
-
-Please create a PR with an overview of what you have accomplished, including the steps to create the database, the user,
-and how to grant permissions to that user. You may also want to include the necessary steps run the `seeder` as well as
-hot to run the backend and frontend in both dev and build mode. 
-A playground for the backend would be located in `http://localhost:<port>/graphql`.
-
-Finally, please specify how much of your time you spent on this challenge. This won't necessarily affect your score, and
-will be used internally to adjust this and any other test.
+Nest is [MIT licensed](LICENSE).
